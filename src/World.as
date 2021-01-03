@@ -1140,7 +1140,17 @@ package{
 							}
 							break;
 						}
-							
+						/*case ItemId.LAVA_DOT:
+						case ItemId.LAVA_DOWN:
+						case ItemId.LAVA_RIGHT:
+						case ItemId.LAVA_UP:
+						case ItemId.LAVA_LEFT: {
+							if (!player.isFlying) {
+								ItemManager.sprDoors.drawPoint(target, point, 40);
+								continue;
+							}
+							break;
+						}*/
 						case ItemId.CROWNDOOR:{
 							if (player.collideWithCrownDoorGate) {
 								ItemManager.sprDoors.drawPoint(target, point, 40);
@@ -1217,6 +1227,16 @@ package{
 							continue;
 						}
 						
+						case ItemId.LAVA_LEFT: {
+							if (!player.isFlying) {
+								ItemManager.sprDoors.drawPoint(target, point, 13);
+							}
+							else {
+								ItemManager.sprDoors.drawPoint(target, point, 12);
+							}
+							
+							continue;
+						}
 						case ItemId.ZOMBIE_DOOR: {
 							if (player.zombie) {
 								ItemManager.sprDoors.drawPoint(target, point, 12);
@@ -1590,7 +1610,7 @@ package{
 							ItemManager.sprBonusCoin.drawPoint(target, point, ((offset >> 0)+cx+cy)%12)
 							break;
 						}
-
+						
 						case ItemId.WAVE:{
 							ItemManager.sprWave.drawPoint(target, point, ((offset/5 >> 0))%8);
 							break;
