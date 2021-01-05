@@ -171,7 +171,7 @@ package items
 		public static var sprDrumsBlink:BlockSprite = new BlockSprite(specialBlocksBMD, 142,0,16,16,6);
 		public static var sprInvGravityBlink:BlockSprite = new BlockSprite(specialBlocksBMD, 312,0,16,16,20);
 		public static var sprInvDotBlink:BlockSprite = new BlockSprite(specialBlocksBMD, 466, 0, 16, 16, 5);
-		public static var sprLavaGrav:BlockSprite = new BlockSprite(specialBlocksBMD, 899,0,16,16,2);
+		public static var sprLavaGrav:BlockSprite = new BlockSprite(specialBlocksBMD, 898,0,16,16,5);
 		public static var sprCoinDoors:BlockSprite
 		public static var sprCoinGates:BlockSprite
 		public static var sprBlueCoinDoors:BlockSprite
