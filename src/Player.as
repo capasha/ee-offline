@@ -464,28 +464,32 @@ package
 					//Process gravity
 					switch(current){
 						case 1:
-						case 411:{
+						case 411:
+						case ItemId.LAVA_LEFT: {
 							this.morx = -_gravity;
 							this.mory = 0;
 							rotateGravitymor = false;
 							break;
 						}
 						case 2:
-						case 412:{
+						case 412:
+						case ItemId.LAVA_UP:{
 							this.morx = 0;
 							this.mory = -_gravity;
 							rotateGravitymor = false;
 							break;
 						}
 						case 3:
-						case 413:{
+						case 413:
+						case ItemId.LAVA_RIGHT: {
 							this.morx = _gravity;
 							this.mory = 0;
 							rotateGravitymor = false;
 							break;
 						}
 						case 1518:
-						case 1519:{
+						case 1519:
+						case ItemId.LAVA_DOWN:{
 							this.morx = 0;
 							this.mory = _gravity;
 							rotateGravitymor = false;
@@ -496,7 +500,8 @@ package
 						case ItemId.SPEED_UP:
 						case ItemId.SPEED_DOWN:
 						case 4:
-						case 414:{
+						case 414:
+						case ItemId.LAVA_DOT:{
 							this.morx = 0;
 							this.mory = 0;
 							break;
@@ -561,28 +566,32 @@ package
 				} else {
 					switch(delayed){
 						case 1:
-						case 411:{
+						case 411:
+						case ItemId.LAVA_LEFT:{
 							this.mox =-_gravity;
 							this.moy = 0;
 							rotateGravitymo = false;
 							break;
 						}
 						case 2:
-						case 412:{
+						case 412:
+						case ItemId.LAVA_UP:{
 							this.mox = 0;
 							this.moy = -_gravity;
 							rotateGravitymo = false;
 							break;
 						}
 						case 3:
-						case 413:{
+						case 413:
+						case ItemId.LAVA_RIGHT:{
 							this.mox = _gravity;
 							this.moy = 0;
 							rotateGravitymo = false;
 							break;
 						}
 						case 1518:
-						case 1519:{
+						case 1519:
+						case ItemId.LAVA_DOWN:{
 							this.mox = 0;
 							this.moy = _gravity;
 							rotateGravitymo = false;
@@ -593,7 +602,8 @@ package
 						case ItemId.SPEED_UP:
 						case ItemId.SPEED_DOWN:
 						case 4:
-						case 414:{
+						case 414:
+						case ItemId.LAVA_DOT:{
 							this.mox = 0;
 							this.moy = 0;
 							break;
