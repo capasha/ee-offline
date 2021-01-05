@@ -1695,7 +1695,37 @@ package{
 							});
 							break;
 						}
-						
+						case ItemId.LAVA_LEFT:
+						case ItemId.LAVA_DOT:
+						case ItemId.LAVA_DOWN:
+						case ItemId.LAVA_RIGHT:
+						case ItemId.LAVA_UP:
+						{
+							if (!player.isFlying) {
+								ItemManager.sprLavaGrav.drawPoint(target, point, 0);
+							}
+							else {
+								switch (type) {
+									case ItemId.LAVA_DOT:
+										ItemManager.sprLavaGrav.drawPoint(target, point, 1);
+										break;
+									case ItemId.LAVA_LEFT:
+										ItemManager.sprLavaGrav.drawPoint(target, point, 2);
+										break;
+									case ItemId.LAVA_UP:
+										ItemManager.sprLavaGrav.drawPoint(target, point, 3);
+										break;
+									case ItemId.LAVA_RIGHT:
+										ItemManager.sprLavaGrav.drawPoint(target, point, 4);
+										break;
+									case ItemId.LAVA_DOWN:
+										ItemManager.sprLavaGrav.drawPoint(target, point, 5);
+										break;
+								};
+							
+							}
+							break;
+						}
 						default:{
 							if (ItemId.isNPC(type)) {
 								var npclookup:Npc = lookup.getNpc(cx, cy);
