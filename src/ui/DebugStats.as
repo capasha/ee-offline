@@ -7,20 +7,22 @@ package ui {
 	import flash.text.TextFormat;
 	import flash.utils.getTimer;
 	import states.PlayState;
+	import Me;
 
 	public class DebugStats extends TextField {
 		
 		private static const UPDATE_INTERVAL:Number = 1000;
 		
 		private var state:PlayState;
+		private var movement:Me;
 		
 		private var lastUpdate:Number;
 		private var frameCount:Number;
 		private var lastFps:Number = 0;
 		
-		public function DebugStats(state:PlayState, textColor:Number = 0xffffff, fontSize:Number = 11):void {
+		
+		public function DebugStats(state:PlayState,textColor:Number = 0xffffff, fontSize:Number = 11):void {
 			this.state = state;
-			
 			x = 4;
 			y = 2;
 			
@@ -70,6 +72,18 @@ package ui {
 			add("FPS", lastFps.toString());
 			add("Position", "(" + (state.player.x / 16).toFixed(3) + ", " + (state.player.y / 16).toFixed(3) + ")");
 			add("Time", (state.player.ticks / 100).toFixed(2) + "s");
+			var mleft:Boolean = state.player.leftdown == -1 ? true:false;
+			var mright:Boolean = state.player.rightdown == 0 ? false:true;
+			var mup:Boolean = state.player.updown == -1 ? true:false;
+			var mdown:Boolean = state.player.downdown == 0 ? false:true;
+			add("", "");
+			add("Movement:", "");
+			add("* Up:", mup.toString());
+			add("* Down:", mdown.toString());
+			add("* Left:", mleft.toString());
+			add("* Right:", mright.toString());
+			add("* Space:", state.player.spacedown.toString());
+			
 			
 			if (Global.reportTextTest != "") 
 				add("Report", Global.reportTextTest);
@@ -90,8 +104,11 @@ package ui {
 			*/
 		}
 		
-		private function add(name:String, value:String=""):void {
-			text += name + (value==""?"":": " + value) + "\n";
+		private function add(name:String, value:String = ""):void {
+			if (name == "" && value == "") text += "\n";
+			else {
+				text += name + (value == ""?"":": " + value) + "\n";
+			}
 		}
 		
 	}

@@ -5,9 +5,10 @@ package{
 	import blitter.BlSprite;
 	import blitter.BlText;
 	import blitter.BlTilemap;
+	import flash.display.Sprite;
 	import items.ItemNpc;
 	import utilities.MathUtil;
-
+	import flash.geom.ColorTransform;
 	import com.reygazu.anticheat.variables.SecureBoolean;
 	
 	import flash.display.Bitmap;
@@ -60,6 +61,7 @@ package{
 		private var offsetNPC:Number;
 		
 		public var imageBlocks:Array = new Array();
+		public var colorTransform:ColorTransform = new ColorTransform();
 			
 		public function World(reset_lookups:Boolean = true){
 			super(new Bitmap(new BitmapData(16,16,false,0x0)),9);
@@ -848,7 +850,8 @@ package{
 						//target.copyPixels(ItemManager.bmdBricks[614],rect16x16,point);						
 						target.fillRect(new Rectangle(point.x,point.y,16,16), bgColor);
 					}else{
-						target.copyPixels(ItemManager.bmdBricks[bgrow[cx]],rect16x16,point);
+						target.copyPixels(ItemManager.bmdBricks[bgrow[cx]], rect16x16, point);
+
 					}
 				}
 			}
@@ -859,6 +862,7 @@ package{
 				if (!image.loaded) continue;
 				if (!image.isInbounds(startx, starty, endx, endy)) continue; //is inbounds
 				target.copyPixels(image.bitmapData, image.rect, new Point((image.x << 4) + ox, (image.y << 4) + oy));
+
 			}
 			
 			ice += 0.25;
@@ -882,7 +886,7 @@ package{
 					type = fgrow[cx]
 						
 					if(type != 0){						
-						target.copyPixels(ItemManager.bmdBricks[type],rect18x18,point);
+						target.copyPixels(ItemManager.bmdBricks[type], rect18x18, point);
 						continue;
 					}
 					
@@ -1227,16 +1231,6 @@ package{
 							continue;
 						}
 						
-						case ItemId.LAVA_LEFT: {
-							if (!player.isFlying) {
-								ItemManager.sprDoors.drawPoint(target, point, 13);
-							}
-							else {
-								ItemManager.sprDoors.drawPoint(target, point, 12);
-							}
-							
-							continue;
-						}
 						case ItemId.ZOMBIE_DOOR: {
 							if (player.zombie) {
 								ItemManager.sprDoors.drawPoint(target, point, 12);
@@ -1695,31 +1689,35 @@ package{
 							});
 							break;
 						}
-						case ItemId.LAVA_LEFT:
-						case ItemId.LAVA_DOT:
-						case ItemId.LAVA_DOWN:
-						case ItemId.LAVA_RIGHT:
-						case ItemId.LAVA_UP:
+						case ItemId.WATER_LEFT:
+						case ItemId.WATER_DOT:
+						case ItemId.WATER_DOWN:
+						case ItemId.WATER_RIGHT:
+						case ItemId.WATER_UP:
+						case ItemId.WATER_SDOT:
 						{
 							if (!player.isFlying) {
-								ItemManager.sprLavaGrav.drawPoint(target, point, 0);
+								ItemManager.sprWaterGrav.drawPoint(target, point, 0);
 							}
 							else {
 								switch (type) {
-									case ItemId.LAVA_DOT:
-										ItemManager.sprLavaGrav.drawPoint(target, point, 1);
+									case ItemId.WATER_LEFT:
+										ItemManager.sprWaterGrav.drawPoint(target, point, 1);
 										break;
-									case ItemId.LAVA_LEFT:
-										ItemManager.sprLavaGrav.drawPoint(target, point, 2);
+									case ItemId.WATER_UP:
+										ItemManager.sprWaterGrav.drawPoint(target, point, 2);
 										break;
-									case ItemId.LAVA_UP:
-										ItemManager.sprLavaGrav.drawPoint(target, point, 3);
+									case ItemId.WATER_RIGHT:
+										ItemManager.sprWaterGrav.drawPoint(target, point, 3);
 										break;
-									case ItemId.LAVA_RIGHT:
-										ItemManager.sprLavaGrav.drawPoint(target, point, 4);
+									case ItemId.WATER_DOT:
+										ItemManager.sprWaterGrav.drawPoint(target, point, 4);
 										break;
-									case ItemId.LAVA_DOWN:
-										ItemManager.sprLavaGrav.drawPoint(target, point, 5);
+									case ItemId.WATER_SDOT:
+										ItemManager.sprWaterGrav.drawPoint(target, point, 5);
+										break;
+									case ItemId.WATER_DOWN:
+										ItemManager.sprWaterGrav.drawPoint(target, point, 6);
 										break;
 								};
 							
@@ -1753,6 +1751,7 @@ package{
 					if (decoration[cy][cx] == ItemId.CHECKPOINT) {
 						ItemManager.sprCheckpoint.drawPoint(target, point, (player.checkpoint_x == cx && player.checkpoint_y == cy) ? 1 : 0);
 					}
+					
 					
 					if (Global.playState.brushSize > 1) {
 						if(Global.playState.brushGridLocked) {
@@ -1915,6 +1914,7 @@ package{
 			
 			return closest; // return the nearest npc, even without messages
 		}
+		
 		
 		public function addParticle(p:Particle):void {
 			

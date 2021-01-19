@@ -116,6 +116,9 @@ package
 		public var poisonTimeStart:Number = 0;
 		public var poisonDuration:Number = 0;
 		
+		public var belowX:Number = 0;
+		public var belowY:Number = 0;
+		
 		//if TRUE player will send "m" message no matter what.
 		//use it when you need to tp somebody and update their position.
 		public var enforceMovement:Boolean = false;
@@ -269,10 +272,10 @@ package
 		private var tx:int = -1;
 		private var ty:int = -1;
 		
-		protected var leftdown:int = 0;
-		protected var rightdown:int = 0;
-		protected var updown:int = 0;
-		protected var downdown:int = 0;
+		public var leftdown:int = 0;
+		public var rightdown:int = 0;
+		public var updown:int = 0;
+		public var downdown:int = 0;
 		public var spacedown:Boolean = false;
 		public var spacejustdown:Boolean = false;
 			
@@ -424,14 +427,15 @@ package
 						default: x += 1; break;
 					}
 				}
+				belowX = cx + x;
+				belowY = cy + y;
 				return world.getTile(0, cx + x, cy + y);
 			}
 			// Getting the block the player is standing on. Also gets the gravity arrows
 			current_below = getCurrentBelow();
-			
 			queue.push(current);
 			
-			if(current == 4 || current == 414 || ItemId.isClimbable(current)){
+			if(current == 4 || current == 414 || current == ItemId.WATER_DOT || ItemId.isClimbable(current)){
 				delayed = queue.shift();
 				queue.push(current);
 			}
@@ -465,7 +469,7 @@ package
 					switch(current){
 						case 1:
 						case 411:
-						case ItemId.LAVA_LEFT: {
+						case ItemId.WATER_LEFT: {
 							this.morx = -_gravity;
 							this.mory = 0;
 							rotateGravitymor = false;
@@ -473,7 +477,7 @@ package
 						}
 						case 2:
 						case 412:
-						case ItemId.LAVA_UP:{
+						case ItemId.WATER_UP:{
 							this.morx = 0;
 							this.mory = -_gravity;
 							rotateGravitymor = false;
@@ -481,7 +485,7 @@ package
 						}
 						case 3:
 						case 413:
-						case ItemId.LAVA_RIGHT: {
+						case ItemId.WATER_RIGHT: {
 							this.morx = _gravity;
 							this.mory = 0;
 							rotateGravitymor = false;
@@ -489,7 +493,7 @@ package
 						}
 						case 1518:
 						case 1519:
-						case ItemId.LAVA_DOWN:{
+						case ItemId.WATER_DOWN:{
 							this.morx = 0;
 							this.mory = _gravity;
 							rotateGravitymor = false;
@@ -501,7 +505,7 @@ package
 						case ItemId.SPEED_DOWN:
 						case 4:
 						case 414:
-						case ItemId.LAVA_DOT:{
+						case ItemId.WATER_DOT:{
 							this.morx = 0;
 							this.mory = 0;
 							break;
@@ -567,7 +571,7 @@ package
 					switch(delayed){
 						case 1:
 						case 411:
-						case ItemId.LAVA_LEFT:{
+						case ItemId.WATER_LEFT:{
 							this.mox =-_gravity;
 							this.moy = 0;
 							rotateGravitymo = false;
@@ -575,7 +579,7 @@ package
 						}
 						case 2:
 						case 412:
-						case ItemId.LAVA_UP:{
+						case ItemId.WATER_UP:{
 							this.mox = 0;
 							this.moy = -_gravity;
 							rotateGravitymo = false;
@@ -583,7 +587,7 @@ package
 						}
 						case 3:
 						case 413:
-						case ItemId.LAVA_RIGHT:{
+						case ItemId.WATER_RIGHT:{
 							this.mox = _gravity;
 							this.moy = 0;
 							rotateGravitymo = false;
@@ -591,7 +595,7 @@ package
 						}
 						case 1518:
 						case 1519:
-						case ItemId.LAVA_DOWN:{
+						case ItemId.WATER_DOWN:{
 							this.mox = 0;
 							this.moy = _gravity;
 							rotateGravitymo = false;
@@ -603,7 +607,7 @@ package
 						case ItemId.SPEED_DOWN:
 						case 4:
 						case 414:
-						case ItemId.LAVA_DOT:{
+						case ItemId.WATER_DOT:{
 							this.mox = 0;
 							this.moy = 0;
 							break;
@@ -1331,6 +1335,9 @@ package
 				//}
 				return;
 			}
+			if (current_below == 9) {
+				target.fillRect(new Rectangle(x + ox, y + oy, 16, 16), 15736607);
+			}
 			//smiley is not currently on the screen and it's not me
 			if (!(this.x > startx && this.y > starty && this.x < endx && this.y < endy) && !isme) return;
 			
@@ -1827,6 +1834,7 @@ package
 		{
 			_isInvulnerable.value = value;
 		}
+		
 		
 		public function get isInvulnerable():Boolean
 		{

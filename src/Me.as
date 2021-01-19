@@ -32,8 +32,10 @@ package {
 				rightdown = Bl.isKeyDown(39) || KeyBinding.right.isDown(true) ? 1 : 0;
 				downdown  = Bl.isKeyDown(40) || KeyBinding.down.isDown(true) ? 1 : 0;
 				
+				
 				spacejustdown = KeyBinding.jump.isJustPressed(true);
 				spacedown = KeyBinding.jump.isDown(true);
+			
 				
 				horizontal = leftdown + rightdown;
 				vertical = updown + downdown;

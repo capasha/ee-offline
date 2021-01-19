@@ -33,7 +33,7 @@
 	import flash.net.URLRequest;
 	import flash.ui.Keyboard;
 	import flash.utils.ByteArray;
-	
+	import flash.utils.*;
 	import items.ItemId;
 	import items.ItemManager;
 	
@@ -467,7 +467,6 @@
 			updateMinimap(xo,yo)
 			
 		}
-		
 		public override function enterFrame():void {
 			super.enterFrame();
 			Global.base.ui2instance.enterFrame();
@@ -537,7 +536,6 @@
 			var oldd:Number = world.showDeathGate;
 			world.showDeathGate = player.deaths;
 			if (world.overlaps(player)) world.showDeathGate = oldd;
-			
 			
 			for(var i:int = 0; i<particles.length-1;i++)
 			{
@@ -1496,5 +1494,10 @@
 				}
 			}
 		}
+
 	}
+
+	
+
 }
+

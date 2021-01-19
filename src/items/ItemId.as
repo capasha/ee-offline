@@ -316,11 +316,12 @@ package items
 		public static const SHADOW_M:int = 1616;
 		public static const SHADOW_N:int = 1617;
 		
-		public static const LAVA_DOT:int = 1637;
-		public static const LAVA_LEFT:int = 1638;
-		public static const LAVA_UP:int = 1639;
-		public static const LAVA_RIGHT:int = 1640;
-		public static const LAVA_DOWN:int = 1641;
+		public static const WATER_LEFT:int = 1637;
+		public static const WATER_UP:int = 1638;
+		public static const WATER_RIGHT:int = 1639;
+		public static const WATER_DOT:int = 1640;
+		public static const WATER_SDOT:int = 1641;
+		public static const WATER_DOWN:int = 1642;
 		
 		public static const NPC_SMILE:int = 1550;
 		public static const NPC_SAD:int   = 1551;
@@ -389,6 +390,7 @@ package items
 				case ROPE:
 				case SLOW_DOT:
 				case SLOW_DOT_INVISIBLE:
+				case WATER_SDOT:
 				case FAIRYTALE_LADDER:
 				case METAL_LADDER:
 				case GARDEN_LATTICE_VINES:

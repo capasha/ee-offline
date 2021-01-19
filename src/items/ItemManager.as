@@ -171,7 +171,7 @@ package items
 		public static var sprDrumsBlink:BlockSprite = new BlockSprite(specialBlocksBMD, 142,0,16,16,6);
 		public static var sprInvGravityBlink:BlockSprite = new BlockSprite(specialBlocksBMD, 312,0,16,16,20);
 		public static var sprInvDotBlink:BlockSprite = new BlockSprite(specialBlocksBMD, 466, 0, 16, 16, 5);
-		public static var sprLavaGrav:BlockSprite = new BlockSprite(specialBlocksBMD, 898,0,16,16,5);
+		public static var sprWaterGrav:BlockSprite = new BlockSprite(specialBlocksBMD, 898,0,16,16,6);
 		public static var sprCoinDoors:BlockSprite
 		public static var sprCoinGates:BlockSprite
 		public static var sprBlueCoinDoors:BlockSprite
@@ -859,11 +859,12 @@ package items
 			liquid.addBrick(createBrick(ItemId.LAVA, ItemLayer.ABOVE, specialBlocksBMD, "bricklava","sets the player on fire and kills", ItemTab.ACTION,false,false,218,0x0, ["Lava", "Hazard", "Die", "Orange", "Death", "Burn", "Sink", "Hell"]));
 			liquid.addBrick(createBrick(ItemId.MUD, ItemLayer.ABOVE, mudBlocksBMD, "brickswamp","slows the player down", ItemTab.ACTION,false,false,0,0x0, ["Mud", "Swamp", "Bog", "Slow", "Brown", "Sink"]));
 			liquid.addBrick(createBrick(ItemId.TOXIC_WASTE, ItemLayer.ABOVE, specialBlocksBMD, "bricktoxic", "kills the player instantly on touch", ItemTab.ACTION, false, false, 746, 0x0, ["Toxic", "Waste", "Slow", "Green"]));
-			liquid.addBrick(createBrick(ItemId.LAVA_DOT, ItemLayer.ABOVE, blocksBMD, "", "Gravity Lava dot", ItemTab.ACTION, false, false, 321, 0x0, ["Lava", "Gravity", "Dot"]));
-			liquid.addBrick(createBrick(ItemId.LAVA_LEFT, ItemLayer.ABOVE, blocksBMD, "", "Gravity Lava left", ItemTab.ACTION, false, false, 322, 0x0, ["Lava", "Gravity", "Left"]));
-			liquid.addBrick(createBrick(ItemId.LAVA_UP, ItemLayer.ABOVE, blocksBMD, "", "Gravity Lava up", ItemTab.ACTION, false, false, 323, 0x0, ["Lava", "Gravity", "Up"]));
-			liquid.addBrick(createBrick(ItemId.LAVA_RIGHT, ItemLayer.ABOVE, blocksBMD, "", "Gravity Lava right", ItemTab.ACTION, false, false, 324, 0x0, ["Lava", "Gravity", "Right"]));
-			liquid.addBrick(createBrick(ItemId.LAVA_DOWN, ItemLayer.ABOVE, blocksBMD, "", "Gravity Lava down", ItemTab.ACTION, false, false, 325, 0x0, ["Lava", "Gravity", "Down"]));
+			liquid.addBrick(createBrick(ItemId.WATER_LEFT, ItemLayer.ABOVE, specialBlocksBMD, "", "Gravity Water Left", ItemTab.ACTION, false, false, 899, 0x0, ["Water", "Gravity", "Left"]));
+			liquid.addBrick(createBrick(ItemId.WATER_UP, ItemLayer.ABOVE, specialBlocksBMD, "", "Gravity Lava Up", ItemTab.ACTION, false, false, 900, 0x0, ["Water", "Gravity", "Up"]));
+			liquid.addBrick(createBrick(ItemId.WATER_RIGHT, ItemLayer.ABOVE, specialBlocksBMD, "", "Gravity Lava Right", ItemTab.ACTION, false, false, 901, 0x0, ["Water", "Gravity", "Right"]));
+			liquid.addBrick(createBrick(ItemId.WATER_DOT, ItemLayer.ABOVE, specialBlocksBMD, "", "Gravity Lava Dot", ItemTab.ACTION, false, false, 902, 0x0, ["Water", "Gravity", "Dot"]));
+			liquid.addBrick(createBrick(ItemId.WATER_SDOT, ItemLayer.ABOVE, specialBlocksBMD, "", "Gravity Lava Slow Dot", ItemTab.ACTION, false, false, 903, 0x0, ["Water", "Gravity", "Slow Dot"]));
+			liquid.addBrick(createBrick(ItemId.WATER_DOWN, ItemLayer.ABOVE, specialBlocksBMD, "", "Gravity Lava Down", ItemTab.ACTION, false, false, 904, 0x0, ["Water", "Gravity", "Down"]));
 			brickPackages.push(liquid);
 			
 			var portal:ItemBrickPackage = new ItemBrickPackage("portals", "Portal Blocks", ["Teleport"]);
